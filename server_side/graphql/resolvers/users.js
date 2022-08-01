@@ -33,15 +33,15 @@ module.exports = {
         throw new UserInputError("Wrong credential", { errors });
       }
 
-      const match = await bcrypt.conpare(password, user.password);
+      const match = await bcrypt.compare(password, user.password);
       if (!match) {
         errors.general = "Wrong credential";
         throw new UserInputError("Wrong credential", { errors });
       }
       const token = generateToken(user);
       return {
-        ...res._doc,
-        id: res._id,
+        ...user._doc,
+        id: user._id,
         token,
       };
     },
