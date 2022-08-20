@@ -24,13 +24,10 @@ module.exports = {
   Mutation: {
     async login(_, { username, password }) {
       const { errors, valid } = validateLoginInput(username, password);
-      console.log(errors);
-      console.log(valid);
       if (!valid) {
         throw new UserInputError("Errors", { errors });
       }
 
-      console.log("pass");
       const user = await User.findOne({ username });
       if (!user) {
         errors.general = "User not found";
@@ -43,6 +40,8 @@ module.exports = {
         throw new UserInputError("Wrong credential", { errors });
       }
       const token = generateToken(user);
+
+      console.log(user._doc);
       return {
         ...user._doc,
         id: user._id,
