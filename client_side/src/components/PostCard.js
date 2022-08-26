@@ -10,12 +10,6 @@ const PostCard = ({
   post: { body, createdAt, id, username, likeCount, commentCount, likes },
 }) => {
   const { user } = useContext(AuthContext);
-  const likePost = () => {
-    console.log("object");
-  };
-  const commentOnPost = () => {
-    console.log("comment");
-  };
   return (
     <Card fluid>
       <Card.Content>
@@ -36,13 +30,7 @@ const PostCard = ({
           content="Comment on post"
           i
           trigger={
-            <Button
-              inverted
-              labelPosition="right"
-              onClick={commentOnPost}
-              as={Link}
-              to={`/post/${id}`}
-            >
+            <Button inverted labelPosition="right" as={Link} to={`/post/${id}`}>
               <Button color="blue" basic>
                 <Icon name="comments" />
               </Button>

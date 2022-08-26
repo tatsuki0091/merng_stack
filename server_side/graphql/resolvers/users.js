@@ -41,7 +41,6 @@ module.exports = {
       }
       const token = generateToken(user);
 
-      console.log(user._doc);
       return {
         ...user._doc,
         id: user._id,
@@ -52,7 +51,6 @@ module.exports = {
       _,
       { registerInput: { username, email, password, confirmPassword } }
     ) {
-      console.log("user");
       const { valid, errors } = validateRegisterInput(
         username,
         email,
@@ -70,8 +68,6 @@ module.exports = {
           },
         });
       }
-      console.log("user");
-      console.log(user);
       password = await bcrypt.hash(password, 12);
       const newUser = new User({
         email,
