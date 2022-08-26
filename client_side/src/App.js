@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
+import SinglePost from "./pages/SinglePost";
 import MenuBar from "./components/MenuBar";
 import { Container } from "semantic-ui-react";
 import { AuthProvider } from "./context/auth";
@@ -17,6 +18,7 @@ function App() {
           <MenuBar />
           <Routes>
             <Route exact path="/" element={<Home />} />
+            <Route path="/post/:postId" element={<SinglePost />} />
             <Route element={<AuthRoute />}>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
